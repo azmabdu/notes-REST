@@ -93,9 +93,12 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
+
 STATICFILES_DIRS = [
-    BASE_DIR / 'notes-front/build/static'
+    os.path.join(BASE_DIR, 'notes-front/build/static')
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'notes/staticfiles')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
