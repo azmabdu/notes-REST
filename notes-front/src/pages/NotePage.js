@@ -48,20 +48,26 @@ const NotePage = ({ match, history }) => {
   };
 
   let handleSubmit = () => {
-    console.log("NOTE:", note);
-    if (noteId !== "new" && note.body === "") {
-      deleteNote();
-    } else if (noteId !== "new") {
-      updateNote();
-    } else if (noteId === "new" && note.body !== null) {
-      createNote();
-    }
+    if (note !== null) {
+        if (noteId !== "new" && note.body === "") {
+          deleteNote();
+        } else if (noteId !== "new" && note.body !== "") {
+          updateNote();
+        } else if (noteId === "new" && note.body !== "") {
+          createNote();
+        }
+      }
+
     history.push("/");
   };
 
   let handleChange = (value) => {
     setNote((note) => ({ ...note, body: value }));
   };
+
+  let getBack = () => {
+    history.push('/');
+  }
 
   return (
     <div className="note">
